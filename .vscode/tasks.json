@@ -1,0 +1,63 @@
+{
+    "version": "2.0.0",
+    "tasks": [
+        // BUILD SAMPLE LAB5 B0
+        {
+            "label": "BUILD SAMPLE LAB5 B0",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "my_program",
+                "main.c",
+                "src/my_functions.c",
+                "-I",
+                "include",
+                "-g"
+            ],
+            "group": "build",
+            "detail": "Biên dịch SAMPLE LAB5 B0",
+            "problemMatcher": "$gcc"
+        },
+
+        // BUILD TEST SAMPLE LAB5 B0
+        {
+            "label": "BUILD TEST SAMPLE LAB5 B0",
+            "type": "shell",
+            "command": "gcc",
+            "args": [
+                "-o",
+                "test_runner",
+                "test/test_tinh_tong.c",
+                "src/my_functions.c",
+                "include/CUnit/Automated.c",
+                "include/CUnit/Basic.c",
+                "include/CUnit/Console.c",
+                "include/CUnit/CUError.c",
+                "include/CUnit/MyMem.c",
+                "include/CUnit/TestDB.c",
+                "include/CUnit/TestRun.c",
+                "include/CUnit/Util.c",
+                "-I",
+                "include",
+                "-g"
+            ],
+            "group": "build",
+            "detail": "Biên dịch TEST SAMPLE LAB5 B0",
+            "problemMatcher": "$gcc"
+        },
+        
+        // RUN TEST
+        {
+            "label": "run_test",
+            "type": "shell",
+            "command": "./test_runner",
+            "dependsOn": "BUILD TEST SAMPLE LAB5 B0",
+            "group": {
+                "kind": "test",
+                "isDefault": true
+            }
+        }
+
+    ]
+}
